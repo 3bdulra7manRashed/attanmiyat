@@ -1,26 +1,261 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: "NotoKufiArabic Bold";
+  src: url("/fonts/NotoKufiArabic-Bold.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: "Droid Kufi Arabic - Regular";
+  src: url("/fonts/NotoKufiArabic-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "ETmodules";
+  src: url("/fonts/modules.woff") format("woff"),
+       url("/fonts/modules.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #666666;
+  font-family: "Droid Kufi Arabic - Regular", Helvetica, Arial, Lucida, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7em;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "NotoKufiArabic Bold", Helvetica, Arial, Lucida, sans-serif;
+  font-weight: 500;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* Divi-faithful container & left-to-right column grid with RTL content inside */
+.et-container {
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.et-row {
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  direction: ltr;
+  align-items: flex-start;
+}
+
+.et-col {
+  direction: rtl;
+  margin-right: 5.5%;
+  min-width: 0;
+}
+
+.et-col:last-child {
+  margin-right: 0;
+}
+
+.et-col-4-4 {
+  width: 100%;
+  margin-right: 0;
+}
+
+.et-col-2-3 {
+  width: 64.833%;
+}
+
+.et-col-1-3 {
+  width: 29.667%;
+}
+
+.et-col-1-2 {
+  width: 47.25%;
+}
+
+.et-col-1-4 {
+  width: 20.875%;
+}
+
+.et-col-1-5 {
+  width: 15.6%;
+}
+
+/* Values / Vision / Mission Card Hover */
+.blurb-1 {
+  background-color: rgba(255, 255, 255, 0.19);
+  border-radius: 11px;
+  overflow: hidden;
+  box-shadow: 0px 2px 18px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.blurb-1:hover {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.blurb-1 .et-pb-icon,
+.blurb-1 h4,
+.blurb-1 p {
+  transition: color 0.3s ease;
+}
+
+.blurb-1:hover h4,
+.blurb-1:hover .et-pb-icon,
+.blurb-1:hover p {
+  color: #18578e !important;
+}
+
+/* Divi Button Transitions */
+.et-cta-button {
+  transition: all 300ms ease 0ms;
+}
+
+.et-cta-button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* Waypoint entrance animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.animate-slide-top {
+  animation: slideInTop 0.7s ease-out both;
+}
+
+.animate-slide-bottom {
+  animation: slideInBottom 0.7s ease-out both;
+}
+
+/* Masarat Sublist indentation */
+.masarat-sublist {
+  padding-right: 119px;
+}
+
+/* Header Navigation */
+.et-nav-link {
+  color: rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
+}
+
+.et-nav-link:hover {
+  opacity: 0.7;
+}
+
+/* Mobile / Tablet Responsive Adjustments */
+@media (max-width: 980px) {
+  .et-row {
+    flex-direction: column;
+  }
+
+  .et-col {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 30px;
+  }
+
+  .et-col:last-child {
+    margin-bottom: 0;
+  }
+
+  .hero-text-col {
+    order: 2;
+    margin-bottom: 0 !important;
+  }
+
+  .hero-badge-col {
+    order: 1;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-section {
+    padding: 96px 0 110px 0 !important;
+  }
+
+  .hero-text-inner {
+    margin-top: 12px !important;
+    text-align: center !important;
+  }
+
+  .hero-text-inner h1,
+  .hero-text-inner p {
+    text-align: center !important;
+  }
+
+  .masarat-sublist {
+    padding-right: 16px;
+  }
+
+  .clients-image-wrap {
+    text-align: center !important;
+  }
+
+  .footer-info-box {
+    float: none !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
 }
